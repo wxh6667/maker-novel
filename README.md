@@ -2,8 +2,6 @@
 
 > 给写小说的人，一个有意思的写作空间
 
-**在线体验：** [https://arboris.aozhiai.com](https://arboris.aozhiai.com)
-
 ---
 
 ## 功能特性
