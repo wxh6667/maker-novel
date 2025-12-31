@@ -1,0 +1,55 @@
+# JetBrains IDEs
+.idea/
+
+# Python virtual environments
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Build artifacts
+/dist/
+!frontend/dist/
+
+# Logs
+logs/
+
+# State files (data directory at project root, not source code)
+/state/
+*.db
+*.db-shm
+*.db-wal
+
+# Config files
+.env
+!.env.example
+!env.example
+
+# Distribution files
+UNKNOWN.egg-info/
+
+# Export directories in projects
+/projects/*/export/
+
+# User-specific directories
+.claude/
+projects/
+
+# Web development files
+web/.env
+web/node_modules/
+
+# Storage (keep directory structure)
+backend/storage/*
+!backend/storage/.gitkeep
+
+# Docker runtime data (never track)
+deploy/data/
+deploy/prompts/
+deploy/logs/
+
+# Serena config (local)
+.serena/
+frontend/.vite

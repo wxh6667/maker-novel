@@ -1,0 +1,1 @@
+import{N as e}from"./index-Byhz0bWx.js";import{k as o,H as t,I as a}from"./vue-vendor-CMZ7xYHN.js";const m=o({__name:"AdminNovelDetail",setup(r){return(n,s)=>(a(),t(e,{"is-admin":!0}))}});export{m as default};

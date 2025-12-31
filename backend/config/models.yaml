@@ -1,0 +1,17 @@
+providers:
+  default:
+    model: gpt-4o
+    provider: openai_compat
+    base_url: https://api.openai.com/v1
+    api_key: sk-your-api-key-here
+    temperature: 0.7
+    max_tokens: 40960
+    timeout: 600.0
+
+nodes:
+  embedding: default
+  concept: default
+  blueprint: default
+  evaluation: default
+  outline: default
+  summary: default

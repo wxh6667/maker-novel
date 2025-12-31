@@ -1,0 +1,43 @@
+# JetBrains IDEs
+.idea/
+
+# Python virtual environments
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Build artifacts
+dist/
+
+# Logs (data directory, not source code)
+logs/
+
+# State files (data directory at project root, not maker_workflow/state source code)
+/state/
+*.db
+*.db-shm
+*.db-wal
+
+# Git
+.git/
+.gitignore
+
+# Distribution files
+UNKNOWN.egg-info/
+
+# Test files
+tests/
+
+# Documentation
+docs/
+
+# Project-specific data directories
+/projects/
+
+# Frontend build artifacts (avoid copying host node_modules)
+frontend/node_modules/
+frontend/.vite/
+frontend/.env*
