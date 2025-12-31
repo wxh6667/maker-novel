@@ -125,6 +125,71 @@ EMBEDDING_MODEL=text-embedding-3-large
 VECTOR_DB_URL=file:./storage/rag_vectors.db
 ```
 
+### 多模型配置
+
+系统支持配置多个 LLM Provider，并为不同功能节点绑定不同模型。配置文件位于 `backend/config/models.yaml`。
+
+**配置结构：**
+
+```yaml
+providers:
+  # Provider 名称（自定义）
+  openai-gpt4:
+    model: gpt-4o                          # 模型名称
+    base_url: https://api.openai.com/v1    # API 地址
+    api_key: sk-xxx                        # API Key（支持环境变量 ${OPENAI_API_KEY}）
+    temperature: 0.7                       # 温度参数
+    max_tokens: 40960                      # 最大 token 数
+    timeout: 600.0                         # 超时时间（秒）
+
+  # 可配置多个 Provider
+  deepseek:
+    model: deepseek-chat
+    base_url: https://api.deepseek.com/v1
+    api_key: sk-xxx
+    temperature: 0.8
+    max_tokens: 32768
+
+  ollama-local:
+    model: qwen2.5:14b
+    base_url: http://localhost:11434/v1
+    api_key: ollama                        # Ollama 可填任意值
+    temperature: 0.7
+
+# 节点绑定：为不同功能指定使用的 Provider
+nodes:
+  embedding: openai-gpt4      # 向量嵌入
+  concept: deepseek           # 概念/灵感生成
+  blueprint: openai-gpt4      # 蓝图生成
+  evaluation: deepseek        # 内容评估
+  outline: openai-gpt4        # 大纲生成
+  summary: ollama-local       # 摘要生成
+```
+
+**节点说明：**
+
+| 节点 | 功能 | 建议模型 |
+|------|------|----------|
+| `embedding` | 文本向量化（RAG） | text-embedding-3-large |
+| `concept` | 灵感模式对话 | 创意能力强的模型 |
+| `blueprint` | 故事蓝图生成 | 逻辑能力强的模型 |
+| `evaluation` | 章节质量评估 | 分析能力强的模型 |
+| `outline` | 章节大纲生成 | 结构化输出好的模型 |
+| `summary` | 内容摘要 | 速度快的模型 |
+
+**高级配置：**
+
+```yaml
+providers:
+  with-proxy:
+    model: gpt-4o
+    base_url: https://api.openai.com/v1
+    api_key: ${OPENAI_API_KEY}            # 引用环境变量
+    proxy: socks5://127.0.0.1:7890        # 代理支持
+    support_json_mode: true               # JSON 模式
+    support_stream: true                  # 流式输出
+```
+
 ---
 
 ## 项目结构
